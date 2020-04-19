@@ -11,8 +11,7 @@ public class CharacterFactory {
      * @param name The character's name.
      * @return The Character object.
      */
-    public Character getNewCharacter(String name) {
-        String job = "test job";
+    public Character getNewCharacter(String name, String job) {
         int level = 1;
         int experience = 0;
 

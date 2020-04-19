@@ -18,6 +18,8 @@ public class CreateCharacterWindow extends Stage {
         // GUI things
         Text text_name = new Text("Name: ");
         TextField textfield_name = new TextField();
+        Text text_job = new Text("Job: ");
+        TextField textfield_job = new TextField();
         Button btn_create = new Button("Create");
         // Fills later
         Text text_enteredName = new Text();
@@ -28,7 +30,7 @@ public class CreateCharacterWindow extends Stage {
         btn_create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                C = cf.getNewCharacter(textfield_name.getText());
+                C = cf.getNewCharacter(textfield_name.getText(), textfield_job.getText());
                 //text_enteredName.setText(C.getName());
                 close();
                 new StatisticsWindow(C);
@@ -36,7 +38,8 @@ public class CreateCharacterWindow extends Stage {
         });
 
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(text_name, textfield_name, btn_create, text_enteredName);
+        vbox.getChildren().addAll(text_name, textfield_name,
+                text_job, textfield_job, btn_create, text_enteredName);
 
         this.setScene(new Scene(vbox, 300, 400));
         this.show();
