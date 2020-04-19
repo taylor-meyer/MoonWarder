@@ -21,10 +21,13 @@ public class CreateCharacterWindow extends Stage {
 
         Text text_enteredName = new Text();
 
+        Character C = new Character();
+
         btn_create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                text_enteredName.setText(textfield_name.getText());
+                C.setName(textfield_name.getText());
+                text_enteredName.setText(C.getName());
             }
         });
 
