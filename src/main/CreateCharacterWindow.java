@@ -11,22 +11,24 @@ import javafx.stage.Stage;
 
 public class CreateCharacterWindow extends Stage {
 
+    private Character C;
+
     public CreateCharacterWindow() {
 
+        // GUI things
         Text text_name = new Text("Name: ");
-
         TextField textfield_name = new TextField();
-
         Button btn_create = new Button("Create");
-
+        // Fills later
         Text text_enteredName = new Text();
 
-        Character C = new Character();
+        // Character factory
+        CharacterFactory cf = new CharacterFactory();
 
         btn_create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                C.setName(textfield_name.getText());
+                C = cf.getNewCharacter(textfield_name.getText());
                 text_enteredName.setText(C.getName());
             }
         });
