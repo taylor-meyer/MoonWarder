@@ -29,7 +29,9 @@ public class CreateCharacterWindow extends Stage {
             @Override
             public void handle(ActionEvent actionEvent) {
                 C = cf.getNewCharacter(textfield_name.getText());
-                text_enteredName.setText(C.getName());
+                //text_enteredName.setText(C.getName());
+                close();
+                new StatisticsWindow(C);
             }
         });
 
