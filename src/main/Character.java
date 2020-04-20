@@ -47,6 +47,21 @@ public class Character {
         this.gold = gold;
     }
 
+    public Character(int level, int experience, int strength, int dexterity,
+                     int constitution,int intelligence, int wisdom, int charisma, int gold) {
+        this.name = "";
+        this.job = "";
+        this.level = level;
+        this.experience = experience;
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.constitution = constitution;
+        this.intelligence = intelligence;
+        this.wisdom = wisdom;
+        this.charisma = charisma;
+        this.gold = gold;
+    }
+
     /* GETTERS AND SETTERS */
     public String getName() {
         return name;

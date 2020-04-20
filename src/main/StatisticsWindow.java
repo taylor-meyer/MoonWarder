@@ -1,7 +1,6 @@
 package main;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -9,7 +8,6 @@ import javafx.stage.Stage;
 public class StatisticsWindow extends Stage {
 
     public StatisticsWindow(Character C) {
-
 
         String str = String.format(
                 "%13s %s\n" +

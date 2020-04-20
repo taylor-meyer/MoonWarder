@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 public class CreateCharacterWindow extends Stage {
 
     private Character C;
+    private Text text_stats;
 
     public CreateCharacterWindow() {
         this.setTitle("MoonWarder");
@@ -38,9 +39,9 @@ public class CreateCharacterWindow extends Stage {
         btn_create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                C = cf.getNewCharacter(textfield_name.getText(), combobox_jobs.getValue().toString());
+                /*C = cf.getNewCharacter(textfield_name.getText(), combobox_jobs.getValue().toString());
                 close();
-                new StatisticsWindow(C);
+                new StatisticsWindow(C);*/
             }
         });
 
@@ -50,12 +51,53 @@ public class CreateCharacterWindow extends Stage {
         rows[1].getChildren().addAll(text_job, combobox_jobs);
         rows[1].setAlignment(Pos.CENTER);
 
+
+
+        // Statistics
+        this.text_stats = new Text();
+        C = cf.getNewCharacter();
+        this.refreshCharacter(C);
+
+        Button btn_reroll = new Button("Reroll");
+        btn_reroll.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                C = cf.getNewCharacter();
+                refreshCharacter(C);
+            }
+        });
+
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(text_title, rows[0], rows[1], btn_create);
+        vbox.getChildren().addAll(text_title, rows[0], rows[1], this.text_stats, btn_reroll, btn_create);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
 
-        this.setScene(new Scene(vbox, 300, 300));
+        this.setScene(new Scene(vbox, 500, 500));
         this.show();
+    }
+
+    private void refreshCharacter(Character C) {
+        String stats = String.format(
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s\n" +
+                "%13s %-3s",
+                "Level:", C.getLevel(),
+                "Experience:", C.getExperience(),
+                "Strength:", C.getStrength(),
+                "Dexterity:", C.getDexterity(),
+                "Constitution:", C.getConstitution(),
+                "Intelligence:", C.getIntelligence(),
+                "Charisma:", C.getCharisma(),
+                "Wisdom:", C.getWisdom(),
+                "Gold:", C.getGold()
+        );
+        this.text_stats.setText(stats);
+        this.text_stats.setStyle("-fx-font: 14 monospace");
     }
 }
