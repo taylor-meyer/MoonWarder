@@ -5,6 +5,7 @@ public class Character {
     /* THE BASICS */
     private String name;
     private String job; // i.e. class
+    private int healthpoints;
     private int level;
     private int experience;
 
@@ -28,6 +29,9 @@ public class Character {
 
     private int gold;
 
+    /* Not displayed to player */
+    private int max_healthpoints;
+
     public Character() {
 
     }
@@ -45,6 +49,8 @@ public class Character {
         this.wisdom = wisdom;
         this.charisma = charisma;
         this.gold = gold;
+        this.max_healthpoints = 9 * this.constitution;
+        this.healthpoints = this.max_healthpoints;
     }
 
     public Character(int level, int experience, int strength, int dexterity,
@@ -60,6 +66,19 @@ public class Character {
         this.wisdom = wisdom;
         this.charisma = charisma;
         this.gold = gold;
+        this.max_healthpoints = 9 * this.constitution;
+        this.healthpoints = this.max_healthpoints;
+    }
+
+    public void heal(int n) {
+        if(this.healthpoints + n > this.max_healthpoints)
+            this.healthpoints = this.max_healthpoints;
+        else
+            this.healthpoints += n;
+    }
+
+    public void takeDamage(int n) {
+        this.healthpoints -= n;
     }
 
     /* GETTERS AND SETTERS */
@@ -149,5 +168,13 @@ public class Character {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public int getHealthpoints() {
+        return healthpoints;
+    }
+
+    public void setHealthpoints(int healthpoints) {
+        this.healthpoints = healthpoints;
     }
 }

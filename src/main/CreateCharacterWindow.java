@@ -86,9 +86,11 @@ public class CreateCharacterWindow extends Stage {
                 "%13s %-3s\n" +
                 "%13s %-3s\n" +
                 "%13s %-3s\n" +
+                "%13s %-3s\n" +
                 "%13s %-3s",
                 "Level:", C.getLevel(),
                 "Experience:", C.getExperience(),
+                "Health:", C.getHealthpoints(),
                 "Strength:", C.getStrength(),
                 "Dexterity:", C.getDexterity(),
                 "Constitution:", C.getConstitution(),
