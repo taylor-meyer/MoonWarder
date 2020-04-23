@@ -1,6 +1,5 @@
 package main;
 
-import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 
 public class Map extends GridPane {
@@ -11,7 +10,6 @@ public class Map extends GridPane {
     public Map() {
         this.setHgap(5);
         this.setVgap(5);
-        this.setAlignment(Pos.TOP_CENTER);
         build();
     }
 

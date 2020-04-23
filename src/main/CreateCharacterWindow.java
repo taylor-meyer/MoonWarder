@@ -39,9 +39,14 @@ public class CreateCharacterWindow extends Stage {
         btn_create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                /*C = cf.getNewCharacter(textfield_name.getText(), combobox_jobs.getValue().toString());
+                C.setName(textfield_name.getText());
+                if (combobox_jobs.getValue() == null)
+                    C.setJob("Bard");
+                else
+                    C.setJob(combobox_jobs.getValue().toString());
+                PlayWindow pw = new PlayWindow(C);
                 close();
-                new StatisticsWindow(C);*/
+                pw.show();
             }
         });
 

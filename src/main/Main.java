@@ -10,9 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        PlayWindow pw = new PlayWindow();
-        pw.show();
-        pw.setResizable(false);
+        new MainMenuWindow();
     }
 
 
