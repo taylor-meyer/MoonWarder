@@ -2,8 +2,14 @@ package main;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Map extends Stage {
 
@@ -13,17 +19,33 @@ public class Map extends Stage {
         this.setTitle("Map");
 
         gp = new GridPane();
-
         gp.setHgap(5);
         gp.setVgap(5);
-
         gp.setAlignment(Pos.CENTER);
-
-        gp.setStyle("-fx-background-color: #000000");
-
 
         this.setColors();
 
+        /* Player icon */
+        FileInputStream fileInputStream = null;
+        Image image = null;
+        ImageView imageView = null;
+        try {
+            fileInputStream = new FileInputStream("player.png");
+            image = new Image(fileInputStream);
+            imageView = new ImageView(image);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Did not find player.png");
+        }
+
+        if(imageView != null) {
+            imageView.setPreserveRatio(true);
+            imageView.setFitWidth(20);
+
+            BorderPane bp = new BorderPane();
+            bp.setCenter(imageView);
+            gp.add(bp, 1, 1);
+        }
 
         BorderPane bp = new BorderPane();
         bp.setCenter(gp);
