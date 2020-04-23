@@ -11,7 +11,7 @@ public class Map extends GridPane {
     public Map() {
         this.setHgap(5);
         this.setVgap(5);
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.TOP_CENTER);
         build();
     }
 
