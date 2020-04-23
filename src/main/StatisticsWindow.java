@@ -1,11 +1,9 @@
 package main;
 
-import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-public class StatisticsWindow extends Stage {
+public class StatisticsWindow extends VBox {
 
     public StatisticsWindow(Character C) {
 
@@ -34,13 +32,8 @@ public class StatisticsWindow extends Stage {
                 "Gold:", C.getGold()
         );
         Text text = new Text(str);
-        text.setStyle("-fx-font-family: monospace");
+        text.setStyle("-fx-font-family: monospace; -fx-font-size: 16px");
 
-
-        VBox vbox = new VBox();
-        vbox.getChildren().add(text);
-
-        this.setScene(new Scene(vbox, 300, 400));
-        this.show();
+        this.getChildren().add(text);
     }
 }
