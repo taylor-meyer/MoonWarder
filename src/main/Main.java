@@ -2,15 +2,18 @@ package main;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        MapCell mc = new MapCell(1, 1, MapCell.Type.GRASSLAND);
+        Map m = new Map();
+        BorderPane bp = new BorderPane();
+        bp.setCenter(m);
         Stage stage = new Stage();
-        stage.setScene(new Scene(mc, 100, 100));
+        stage.setScene(new Scene(bp, 300, 300));
         stage.show();
     }
 
