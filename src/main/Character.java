@@ -27,7 +27,7 @@ public class Character {
     private int wisdom;
     private int charisma;
 
-    private int gold;
+    private Inventory inventory;
 
     /* Not displayed to player */
     private int max_healthpoints;
@@ -40,17 +40,26 @@ public class Character {
                      int constitution,int intelligence, int wisdom, int charisma, int gold) {
         this.name = name;
         this.job = job;
+
+        this.max_healthpoints = 9 * constitution;
+        this.healthpoints = this.max_healthpoints;
+
         this.level = level;
         this.experience = experience;
+
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
         this.intelligence = intelligence;
         this.wisdom = wisdom;
         this.charisma = charisma;
-        this.gold = gold;
-        this.max_healthpoints = 9 * this.constitution;
-        this.healthpoints = this.max_healthpoints;
+
+        inventory = new Inventory(gold);
+
+        // Test adding items
+        inventory.addItem(new Item("Test Item 2"));
+        inventory.addItem(new Item("Test Item 1"));
+        inventory.addItem(new Item("Test Item 3"));
     }
 
     public Character(int level, int experience, int strength, int dexterity,
@@ -65,9 +74,13 @@ public class Character {
         this.intelligence = intelligence;
         this.wisdom = wisdom;
         this.charisma = charisma;
-        this.gold = gold;
         this.max_healthpoints = 9 * this.constitution;
         this.healthpoints = this.max_healthpoints;
+        inventory = new Inventory(gold);
+        // Test adding items
+        inventory.addItem(new Item("Test Item 2"));
+        inventory.addItem(new Item("Test Item 1"));
+        inventory.addItem(new Item("Test Item 3"));
     }
 
     public void heal(int n) {
@@ -163,11 +176,11 @@ public class Character {
     }
 
     public int getGold() {
-        return gold;
+        return inventory.getGold();
     }
 
     public void setGold(int gold) {
-        this.gold = gold;
+        inventory.setGold(gold);
     }
 
     public int getHealthpoints() {
@@ -176,5 +189,21 @@ public class Character {
 
     public void setHealthpoints(int healthpoints) {
         this.healthpoints = healthpoints;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public int getMax_healthpoints() {
+        return max_healthpoints;
+    }
+
+    public void setMax_healthpoints(int max_healthpoints) {
+        this.max_healthpoints = max_healthpoints;
     }
 }
