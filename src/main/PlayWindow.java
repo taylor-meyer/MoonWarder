@@ -24,8 +24,13 @@ public class PlayWindow extends Stage {
         sf.setPadding(new Insets(5, 5, 5, 5));
         bp.setLeft(sf);
 
+        InventoryVBox inventoryVBox = new InventoryVBox(C);
+        inventoryVBox.setPadding(new Insets(5, 5, 5, 5));
+        inventoryVBox.setAlignment(Pos.TOP_LEFT);
+        bp.setRight(inventoryVBox);
+
         Map m = new Map();
-        m.setAlignment(Pos.TOP_LEFT);
+        m.setAlignment(Pos.CENTER);
         bp.setCenter(m);
         bp.setStyle("-fx-background-color: grey");
         this.setScene(new Scene(bp, 700, 400));
