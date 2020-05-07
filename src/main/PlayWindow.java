@@ -1,8 +1,11 @@
 package main;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -20,7 +23,19 @@ public class PlayWindow extends Stage {
 
         BorderPane bp = new BorderPane();
         bp.setTop(hbox);
+
         StatisticsWindow sf = new StatisticsWindow(C);
+
+        Button saveButton = new Button("Save");
+        saveButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                C.saveToJSON();
+            }
+        });
+
+        sf.getChildren().add(saveButton);
+
         sf.setPadding(new Insets(5, 5, 5, 5));
         bp.setLeft(sf);
 

@@ -1,5 +1,10 @@
 package main;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import javax.swing.JFileChooser;
+import java.io.*;
+
 public class Character {
 
     /* THE BASICS */
@@ -92,6 +97,22 @@ public class Character {
 
     public void takeDamage(int n) {
         this.healthpoints -= n;
+    }
+
+    public void saveToJSON() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonString = gson.toJson(this);
+        String filePath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString() + "\\"
+                + this.name + ".json";
+
+        try {
+            System.out.println("Saving to: \"" + filePath + "\"");
+            FileWriter fw = new FileWriter(filePath);
+            fw.write(jsonString);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /* GETTERS AND SETTERS */
