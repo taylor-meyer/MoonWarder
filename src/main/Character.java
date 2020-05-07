@@ -103,7 +103,7 @@ public class Character {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonString = gson.toJson(this);
         String filePath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString() + "\\"
-                + this.name + ".json";
+                + "moonwarder_character.json";
 
         try {
             System.out.println("Saving to: \"" + filePath + "\"");
