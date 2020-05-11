@@ -51,7 +51,8 @@ public class MainMenuWindow extends Stage {
                 try {
                     bufferedReader = new BufferedReader(new FileReader(filePath));
                 } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    System.out.println("Character file was not found!");
+                    //e.printStackTrace();
                 }
 
                 if (bufferedReader != null) {
