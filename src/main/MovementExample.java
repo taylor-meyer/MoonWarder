@@ -18,7 +18,10 @@ public class MovementExample extends Stage {
     int YPos = 9;
 
     Image playerImage;
+    Image town;
     ImageView v = null;
+
+    ImageView vTown = null;
 
     //StackPane playerLoc;
 
@@ -30,7 +33,16 @@ public class MovementExample extends Stage {
             v = new ImageView(playerImage);
 
         } catch (FileNotFoundException e) {
-            System.out.println("Image not found");
+            System.out.println("player Image not found");
+        }
+
+        try {
+            FileInputStream inputstream = new FileInputStream("town.png");
+            town = new Image(inputstream);
+            vTown = new ImageView(town);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("town Image not found");
         }
 
         GridPane ground = new GridPane();
@@ -41,6 +53,10 @@ public class MovementExample extends Stage {
                 sp.setMinHeight(50);
                 sp.setMinWidth(50);
                 sp.setStyle("-fx-background-color: green");
+
+                if (i == 1 && j == 1) {
+                    sp.getChildren().add(vTown);
+                }
 
                 if (i == 0 && j == 9 && v != null) {
                     sp.getChildren().add(v);
