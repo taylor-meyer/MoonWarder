@@ -8,22 +8,36 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Stack;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class MovementExample extends Stage {
 
+    GridPane ground;
+
     int XPos = 0;
     int YPos = 9;
+
+    int M_XPos = 8;
+    int M_YPos = 8;
+    int M_Loc = 88;
+
+    Text monsterText;
 
     Image playerImage;
     Image town;
     ImageView v = null;
 
     ImageView vTown = null;
-
-    //StackPane playerLoc;
 
     public MovementExample() {
 
@@ -45,7 +59,9 @@ public class MovementExample extends Stage {
             System.out.println("town Image not found");
         }
 
-        GridPane ground = new GridPane();
+        monsterText = new Text("M");
+
+        ground = new GridPane();
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -53,6 +69,10 @@ public class MovementExample extends Stage {
                 sp.setMinHeight(50);
                 sp.setMinWidth(50);
                 sp.setStyle("-fx-background-color: green");
+
+                if (i == 8 && j == 8) {
+                    sp.getChildren().add(monsterText);
+                }
 
                 if (i == 1 && j == 1) {
                     sp.getChildren().add(vTown);
@@ -127,8 +147,24 @@ public class MovementExample extends Stage {
             }
         });
 
-        this.setScene(scene);
-        this.show();
 
+
+        this.setTitle("Basic sprite movement example; M == monster");
+        this.setScene(scene);
+        this.setResizable(false);
+
+        MonsterMovement m = new MonsterMovement(this);
+        Thread t = new  Thread(m);
+        t.start();
+
+        this.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                t.interrupt();
+                System.exit(0);
+            }
+        });
+
+        this.show();
     }
 }
