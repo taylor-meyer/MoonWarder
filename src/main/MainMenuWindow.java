@@ -1,5 +1,6 @@
 package main;
 
+import Entities.Character;
 import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

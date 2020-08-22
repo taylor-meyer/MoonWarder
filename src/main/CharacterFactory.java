@@ -1,5 +1,7 @@
 package main;
 
+import Entities.Character;
+
 import java.util.Random;
 
 public class CharacterFactory {

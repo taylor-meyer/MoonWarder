@@ -1,5 +1,7 @@
 package main;
 
+import Entities.Character;
+import Entities.Item;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 

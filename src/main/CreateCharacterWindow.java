@@ -1,5 +1,6 @@
 package main;
 
+import Entities.Character;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
