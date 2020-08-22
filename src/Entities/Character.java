@@ -1,14 +1,15 @@
-package main;
+package Entities;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import main.Inventory;
+
 import javax.swing.JFileChooser;
 import java.io.*;
 
-public class Character {
+public class Character extends Entity {
 
     /* THE BASICS */
-    private String name;
     private String job; // i.e. class
     private int healthpoints;
     private int level;
@@ -38,12 +39,12 @@ public class Character {
     private int max_healthpoints;
 
     public Character() {
-
+        super("NAME_MISSING", 0, 0);
     }
 
     public Character(String name, String job, int level, int experience, int strength, int dexterity,
                      int constitution,int intelligence, int wisdom, int charisma, int gold) {
-        this.name = name;
+        super(name, 0, 0);
         this.job = job;
 
         this.max_healthpoints = 9 * constitution;
@@ -62,14 +63,14 @@ public class Character {
         inventory = new Inventory(gold);
 
         // Test adding items
-        inventory.addItem(new Item("Test Item 2"));
-        inventory.addItem(new Item("Test Item 1"));
-        inventory.addItem(new Item("Test Item 3"));
+        //inventory.addItem(new Item("Test Item 2"));
+        //inventory.addItem(new Item("Test Item 1"));
+        //inventory.addItem(new Item("Test Item 3"));
     }
 
     public Character(int level, int experience, int strength, int dexterity,
                      int constitution,int intelligence, int wisdom, int charisma, int gold) {
-        this.name = "";
+        super("NAME_MISSING",0,0);
         this.job = "";
         this.level = level;
         this.experience = experience;
@@ -83,9 +84,9 @@ public class Character {
         this.healthpoints = this.max_healthpoints;
         inventory = new Inventory(gold);
         // Test adding items
-        inventory.addItem(new Item("Test Item 2"));
-        inventory.addItem(new Item("Test Item 1"));
-        inventory.addItem(new Item("Test Item 3"));
+        //inventory.addItem(new Item("Test Item 2"));
+        //inventory.addItem(new Item("Test Item 1"));
+        //inventory.addItem(new Item("Test Item 3"));
     }
 
     public void heal(int n) {
@@ -116,13 +117,6 @@ public class Character {
     }
 
     /* GETTERS AND SETTERS */
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getJob() {
         return job;
