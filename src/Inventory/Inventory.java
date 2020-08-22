@@ -1,6 +1,8 @@
-package Entities;
+package Inventory;
 
 
+
+import Entities.Item;
 
 import java.util.ArrayList;
 

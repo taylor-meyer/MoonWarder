@@ -1,5 +1,6 @@
 package Entities;
 
+import Inventory.Inventory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
