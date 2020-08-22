@@ -1,10 +1,10 @@
-package main;
+package Entities;
 
 public class Entity {
 
     /* TODO */
     // Rework structure such that character and future npcs/buildings etc. are
-    // inherit this class
+    // inheriting this class
     private String name;
     private int Xpos;
     private int Ypos;

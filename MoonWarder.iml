@@ -16,6 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="JavaFX 14" level="project" />
+    <orderEntry type="library" name="JavaFX 14.01" level="project" />
   </component>
 </module>
