@@ -2,7 +2,6 @@ package Entities;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import main.Inventory;
 
 import javax.swing.JFileChooser;
 import java.io.*;
