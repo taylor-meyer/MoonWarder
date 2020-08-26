@@ -27,7 +27,7 @@ public class MainMenuWindow extends Stage {
             @Override
             public void handle(ActionEvent actionEvent) {
                 close();
-                new CreateCharacterWindow();
+                //new CreateCharacterWindow();
             }
         });
 
