@@ -10,12 +10,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.CharacterFactory;
 import main.PlayWindow;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class CharacterCreationScreen extends HBox {
 
@@ -60,7 +65,21 @@ public class CharacterCreationScreen extends HBox {
 
         /* TODO */
         // VBox right would show a character sprite and ability to cycle to different ones
-        VBox right = new VBox(new Text("AN IMAGE WOULD GO HERE"));
+        Image playerImage ;
+        ImageView v = null;
+        try {
+            FileInputStream inputstream = new FileInputStream("player.png");
+            playerImage = new Image(inputstream);
+            v = new ImageView(playerImage);
+            v.setFitHeight(100);
+            v.setFitWidth(100);
+            v.setPreserveRatio(true);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("player Image not found");
+        }
+
+        VBox right = new VBox(v);
         right.setAlignment(Pos.CENTER);
 
         this.getChildren().addAll(left, right);
